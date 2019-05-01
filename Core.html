@@ -7,9 +7,9 @@
 
 <h3>Logic and Proofs Diagnostic Test @ UCLA ECE Dept.</h3>
 
-<form method="post" action="">
+<form method="post" action="/Core.html/r">
 
-<b>DESCRIPTION</b>: [v0.1] This is a diagnostic test to find weaknesses in your logic to solve and complete proofs in engineering. </br></br>
+<b>DESCRIPTION</b>: [v1.0] This is a diagnostic test to find weaknesses in your logic to solve and complete proofs in engineering. You can ONLY take it ONCE during a 1hr period (backend check)</br></br>
 <b>NOTE</b>: EXACTLY 1 option is correct for ALL questions. Please answer carefully and fast. </br>This application takes into account the time taken to answer the total questions on a page as a feature to determine your "smarts" ;)</br>
 The quiz should take ~20 minutes to solve on average. You cannot go to a pervious page.
 </br>
@@ -67,7 +67,15 @@ ID: <input type="text" name="ID"><br>
 
 
 
-<input type="submit" value="Send Answers">
+<input type="submit" value="Send Answers" onclick="redirect()">
+<script>
+            var redirect = function() {
+                 setTimeout(function(){
+                     window.location.href = 'Core.html';
+                     }, 1);
+                 };
+</script>
+
 <input type="reset" value="Clear Responses">
 </form>
 </body>

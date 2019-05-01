@@ -22,12 +22,11 @@ class ServerHandler(SimpleHTTPServer.SimpleHTTPRequestHandler):
         response = BytesIO()
         response.write(body)
         millis = int(round(time.time() * 1000))
-
-        f= open("assess.txt","a+")
-        f.write(response.getvalue() + '&' + "time=" + str(millis/60000)+'\n')
+        print (response.getvalue() + '&' + "time=" + str(millis/3600000)+'\n')
+        f= open("/Users/pavan/Desktop/assessments/assess1_LP.txt",'a+')
+        f.write(response.getvalue() + '&' + "time=" + str(millis/3600000)+'\n')
         f.close()
-        print "HTTP/1.1 303 See Other"
-        print "Location: Core.html"
+        
 
 Handler = ServerHandler
 
