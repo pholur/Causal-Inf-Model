@@ -5,13 +5,16 @@
 
 <body style="background-color: #E5F3AF">
 
-<h3>Logic and Proofs Diagnostic Test</h3>
+<h3>Logic and Proofs Diagnostic Test @ UCLA ECE Dept.</h3>
 
 <form method="post" action="mailto:pholur@g.ucla.edu?subject=Module1" enctype="text/plain">
 
 <b>DESCRIPTION</b>: [v0.1] This is a diagnostic test to find weaknesses in your logic to solve and complete proofs in engineering. </br></br>
 <b>NOTE</b>: EXACTLY 1 option is correct for ALL questions. Please answer carefully and fast. </br>This application takes into account the time taken to answer the total questions on a page as a feature to determine your "smarts" ;)</br>
 The quiz should take ~20 minutes to solve on average. You cannot go to a pervious page.
+</br>
+
+ID: <input type="text" name="ID"><br>
 
 <P>1. Which of the following is equivalent to A <=> B?<BR>
 <input type="radio" name="1a">A => B and !A => !B<BR>
@@ -53,20 +56,19 @@ The quiz should take ~20 minutes to solve on average. You cannot go to a perviou
 <input type="radio" name="5e">None of these are wrong<BR>
 </p>
 
-<P>6. Which of the following are true for PMF-p(x), CMF-C(x), PDF-f(x), CDF-F(x)?<BR>
-<input type="radio" name="6a">p(x') >= 0 and p(x') <= 1<BR>
-<input type="radio" name="6b">f(x') > 0 and f(x') < 1<BR>
-<input type="radio" name="6c">!B and A=>B means !A<BR>
-<input type="radio" name="6d">A , A->B means B<BR>
-<input type="radio" name="6e">None of these are wrong<BR>
+<P>6. Which of the following are FALSE for PMF-p(x), CMF-C(x), PDF-f(x), CDF-F(x)?<BR>
+<input type="radio" name="6a">p(x') >= 0 and p(x') <= 1 for ALL x'<BR>
+<input type="radio" name="6b">f(x') > 0 for some x'<BR>
+<input type="radio" name="6c">f(x') represents the probability of x' from set of ALL x<BR>
+<input type="radio" name="6d">if F(x') == F(x'') and x' < x'', then f(x) = 0 for ALL x' < x < x''<BR>
+<input type="radio" name="6e">None of these are false.<BR>
 </p>
 
 
-iD: <input type="text" name="ID"><br>
-</BR>
 
-<input type="submit" value="Send Form">
-<input type="reset" value="Clear Form">
+
+<input type="submit" value="Send Answers">
+<input type="reset" value="Clear Responses">
 </form>
 </body>
 </html>
