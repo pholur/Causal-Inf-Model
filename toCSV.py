@@ -1,7 +1,7 @@
 import re
 import csv
 
-number_of_questions = 6
+number_of_questions = 12
 number_of_options = 5
 w, h = number_of_questions*number_of_options + 2, 6;
 Matrix = [["0" for x in range(w)] for y in range(h)] 
@@ -34,8 +34,9 @@ def scrape(lines):
             Matrix[0][0] = "ID"
             Matrix[0][1] = "Time"
         r = r + 1
-    return Matrix,r-1   
+    return Matrix,r-1
 
+# WIPES PREVIOUS ENTRIES INTO CSV. SAVE INSTANCE!!
 def save_to_csv(db,r):     
     with open("/Users/pavan/Desktop/assessments/assess1_LP.csv", "wb") as f:
         writer = csv.writer(f)
