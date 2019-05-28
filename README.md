@@ -12,7 +12,10 @@ Please ensure that the path to the /assessments folder is correctly set in the f
 * Then from the SRC folder, execute: >> python toCSV.py
 * Lastly, execute: >> python infer.py
 
-The last command is a scoring and infering tool that will solve for the deductions. NOTE: Please edit the number_of_entries variable in infer.py to match the number of users who took the test.
+The last command is a scoring and infering tool that will solve for the deductions. NOTE: Please edit the number_of_entries variable in infer.py to match the number of users who took the test. A sample output is provided below.
+
+![](https://github.com/pholur/Causal_Inf_Model/blob/master/sample_op.png)
+
 
 ## Future Work
 
