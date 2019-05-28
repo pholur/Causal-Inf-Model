@@ -3,6 +3,11 @@
 # the adjacency matrix with a prescribed direction.
 
 # from is rows and to is cols
+# ORDER of the ADJ Matrix in the GRAPH (see graph in folder)
+# ALL practice nodes listed FIRST with SUCCESS nodes at the end...
+# EXACT order as described in score_per_concept below.
+# Contact pholur@g.ucla.edu for more details.
+
 adj_matrix = [
 [-1, -1, -1, -1, -1, -1, -1, +1, -1, -1, -1, -1, -1, -1],
 [-1, -1, -1, -1, -1, -1, -1, -1, +0.5, -1, -1, -1, -1, -1],
@@ -21,9 +26,24 @@ adj_matrix = [
 
 import numpy as np
 number_of_entries = 2
-corr_ans = [1, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 
-0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 1, 1, 0, 0, 1, 0, 0, 0, 1, 1, 0, 
-1, 0, 0, 1, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 1, 1, 0, 0]
+
+corr_ans = [
+0, 1, 1, 0, 0,
+1, 0, 0, 1, 0, 
+1, 0, 0, 0, 1, 
+0, 0, 0, 0, 1, 
+0, 0, 1, 1, 0, 
+1, 0, 1, 0, 0, 
+1, 0, 1, 1, 0, 
+0, 1, 1, 0, 0, 
+1, 1, 0, 1, 0, 
+0, 1, 1, 0, 0, 
+0, 0, 0, 1, 0, 
+1, 0, 1, 1, 0, 
+1, 0, 1, 0, 0,
+1, 1, 0, 1, 0,
+1, 0, 1, 1, 0,
+0, 1, 0, 1, 0]
 
 # P voc, sem, inf, dig l, word l, prob, prob l
 pred = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
@@ -38,6 +58,7 @@ pred = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
 
 def process_cause(user_sc):
     A = map(list, zip(*adj_matrix))
+    # we need to parse with the apriori to variables - transposed
     l = []
     for i in range(7,14): # limit the area of searching for cause due to property of graph
         sumt = 0.0
@@ -48,10 +69,9 @@ def process_cause(user_sc):
                     sumt = sumt + A[i][j]*user_sc[j-7]
                 else:
                     tri = A[i][j]
-        l.append((user_sc[i-7] - sumt)/tri)
+        l.append((user_sc[i-7] - sumt)/tri) # trying to compute Bayesian probabilities
     #print l
     return l
-
 
 def ret_val(user_ans, i,j):
     return sum(abs(np.subtract(user_ans[i:j],corr_ans[i:j])))
@@ -74,8 +94,8 @@ def score_per_concept(user_ans):
     l.append(1 - value/length)
 
     #for digital logic
-    value = ret_val(user_ans, 15,25)
-    length = 10.0
+    value = ret_val(user_ans, 15,25) + ret_val(user_ans, 65, 70)
+    length = 15.0
     l.append(1 - value/length)
 
     #for word problems
@@ -89,31 +109,54 @@ def score_per_concept(user_ans):
     l.append(1 - value / length)
 
     #for prob logic
-    value = ret_val(user_ans, 35,40) + ret_val(user_ans, 50, 60)
-    length = 15.0
+    value = ret_val(user_ans, 35,40) + ret_val(user_ans, 50, 65) + ret_val(user_ans, 75, 80)
+    length = 25.0
     l.append(1 - value / length)
 
     return l
 
-inference = ["Vocabulary", "Semantics", "Inference", "Digital Logic", 
-"Word Problems", "Probability", "Probability Logic"]
+inference = ["Vocabulary of Simple Logic Expressions", "Semantics of Simple Logic Vocab", 
+"Inference of Simple Logic Expressions", "Digital Logic (or Binary Logic) and Run-Time Complexity Computation", 
+"Interpreting Word Problems in Logic", "Understanding Basic Probability", 
+"Studying Probability Logic in Engineering Contexts"]
+
+sample_learning_mats = [
+"https://www.iep.utm.edu/prop-log/#H3",
+"http://www.bu.edu/linguistics/UG/course/lx502/_docs/lx502-propositional%20logic.pdf",
+"http://sites.millersville.edu/bikenaga/math-proof/rules-of-inference/rules-of-inference.html",
+"http://www.ee.surrey.ac.uk/Projects/CAL/digital-logic/gatesfunc/",
+"https://brilliant.org/wiki/logic/",
+"https://www.dartmouth.edu/~chance/teaching_aids/books_articles/probability_book/amsbook.mac.pdf",
+"http://egrcc.github.io/docs/dl/deeplearningbook-prob.pdf"
+]
 
 if __name__ == '__main__':  
-    responses = np.loadtxt(open("/Users/pavan/Desktop/assessments/assess1_LP.csv", "rb"), delimiter=",", skiprows=1)
+    responses = np.loadtxt(open("/Users/pavan/Desktop/Research/Masters_Project/SRC/assessments/assess1_LP.csv", "rb"), delimiter=",", skiprows=1)
+    print "########################################################################"
+    print "########### Finding the Causal Weaknesses in Learning Proofs ###########"
+    print "########################################################################"
+
     for i in range(0,number_of_entries):
         user = [int(i) for i in responses[i][0:]]
         user_ans = user[2:]
-        user_net = 60 - ret_val(user_ans, 0, 60)
+        user_net = 80 - ret_val(user_ans, 0, 80)
+        # this variable computes the net score for a minimum threshold
         user_sc = score_per_concept(user_ans)
+        # this variable now consists of the per topic score of the concepts
         val = process_cause(user_sc)
 
         indic = np.argsort(val)
         print
-        print "Net score of user " + str(user[0]) + " is: " + str(int(user_net)) + "/60" 
-        if user_net < 55:
+        print "Net score of user " + str(user[0]) + " is: " + str(int(user_net)) + "/80" 
+        if user_net < 75:
             print "The user has some ways to improve to be better at logic!"
-            print 'The user would do well to practise on ' + '\033[1m' + inference[indic[0]] + ' and ' + inference[indic[1]] + '.' + '\033[0m'
+            print 'The user would do well to practise on ' + '\033[1m' + inference[indic[0]] + \
+            ' and ' + inference[indic[1]] + '.' + '\033[0m'
+            print
+            print "\033[1m" + "Some suitable links " + "\033[0m" + "to help you get better at your weaknesses are listed here:"
+            print ">> " + sample_learning_mats[indic[0]]
+            print ">> " + sample_learning_mats[indic[1]]
 
-        if user_net >= 52:
-            print "The user is reasonably good at logic!"
+        if user_net >= 72:
+            print "The user is reasonably good at logic! Move to the next module!"
         print

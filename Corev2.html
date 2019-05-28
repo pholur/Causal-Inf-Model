@@ -3,14 +3,14 @@
 <title>module-proofs-n-logic</title>
 </head>
 
-<body style="background-color: #E5F3AF">
+<body style="background-color: #E5F3AF;margin-top:40;margin-left:80;margin-right:80;font-size:18px">
 
 <h3>Logic and Proofs Diagnostic Test @ UCLA ECE Dept.</h3>
 
-<form method="post" action="/Core.html/r">
+<form method="post" action="/Corev2.html/r">
 
-<b>DESCRIPTION</b>: [v1.0] This is a diagnostic test to find weaknesses in your logic to solve and complete proofs in engineering. You can ONLY take it ONCE during a 1hr period (backend check)</br></br>
-<b>NOTE</b>: More than 1 option may be correct for any question. Please answer carefully and fast. </br>This application takes into account the time taken to answer the total questions on a page as a feature to determine your "smarts" ;)</br>
+<b>DESCRIPTION</b>: [v2.0] This is a diagnostic test to find weaknesses in your logic to solve and complete proofs in engineering. You can ONLY take it ONCE during a 1hr period (backend check)</br></br>
+<b>NOTE</b>: <b>More than 1 option may be correct</b> for any question. Please answer carefully and fast. </br>This application takes into account the time taken to answer the total questions on a page as a feature to determine your "smarts" ;)</br>
 The quiz should take ~20 minutes to solve on average. You cannot go to a previous page.
 </br>
 
@@ -25,6 +25,8 @@ ID: <input type="text" name="ID"><br>
 </p>
 
 <P>2. Which of the following is equivalent to A => B?<BR>
+<iframe src="https://giphy.com/embed/RThN0hOS2GO4M" style="opacity:0.5;float:right" width="480" height="270" class="giphy-embed" frameborder="0" allowFullScreen></iframe>
+
 <input type="radio" name="6">If A then B<BR>
 <input type="radio" name="7">If B then A<BR>
 <input type="radio" name="8">If ~A then ~B<BR>
@@ -81,11 +83,12 @@ ID: <input type="text" name="ID"><br>
 </p>
 
 <P>9. Which of the following are TRUE when considering Venn Diagrams?<BR>
+<iframe src="https://giphy.com/embed/ucNIl89MV9pS0" style="opacity:0.5;float:right" width="480" height="270" class="giphy-embed" frameborder="0" allowFullScreen></iframe>
 <input type="radio" name="41">Every disk in a Venn diagram represents a discrete set.<BR>
 <input type="radio" name="42">The interection of disks represent the interesting elements of the two sets.<BR>
 <input type="radio" name="43">A n B = 0 implies A U B = S where S is the world<BR>
 <input type="radio" name="44">P(A u B) = 1; if A u B = S where S is the world.<BR>
-<input type="radio" name="45">None of these are wrong.<BR>
+<input type="radio" name="45">None of these are true.<BR>
 </p>
 
 <P>10. Which of the following are FALSE for PMF-p(x), CMF-C(x), PDF-f(x), CDF-F(x)?<BR>
@@ -110,6 +113,42 @@ ID: <input type="text" name="ID"><br>
 <input type="radio" name="58">P(A u B) = P(A) + P(B) - P(A n B)<BR>
 <input type="radio" name="59">Rolling an unbiased die would empirically result in |P(1) - 1/6| -> 0 for increasing trials.<BR>
 <input type="radio" name="60">None.<BR>
+</p>
+
+<P>13. For a <b>discrete-time stationary ergodic stochastic</b> process X on a probability space across 'n' samples: <BR>
+<img src="AEP.png" style="opacity:0.5;width:500px;height:100px;"><BR>
+<input type="radio" name="61">The expression converges to the entropy of the system H(X) for large 'n'.<BR>
+<input type="radio" name="62">The expression does not converge.<BR>
+<input type="radio" name="63">The convergence is ensured by the Law of Large Numbers.<BR>
+<input type="radio" name="64">The convergence is guaranteed for even a finite 'n'<BR>
+<input type="radio" name="65">None.<BR>
+</p>
+
+<P>14. Finding the 'n'th Fibonacci {Fib(n) = Fib(n-1) + Fib(n-2) for n > 1 and Fib(0) = 0, Fib(1) = 1} number can be computed in many ways. Mark the conclusions that are feasible among the options: <BR>
+<input type="radio" name="66">For any 'n', the best runtime is O(n).<BR>
+<input type="radio" name="67">A naive recursive algorithm has the runtime of 2X the optimal runtime.<BR>
+<input type="radio" name="68">For large 'n' the stack memory might overflow in option 1.<BR>
+<input type="radio" name="69">For large 'n' the stack memory might overflow in option 2.<BR>
+<input type="radio" name="70">The 2 approaches are identical.<BR>
+</p>
+
+<P>15. In <b>Dynamic Time Warping</b>, a pair of 2 signals of differing length are compared by some distance metric in discrete-time to decide whether they are similar, and if so to what extent. A pseudo-code is given below.<BR>
+Is the algorithm provably optimum and which statements are true? <BR>
+<img src="DTW.png" style="opacity:0.5;width:500px;height:300px;"><BR>
+<input type="radio" name="71">All i,j points computed before current iterate are optimal with the assumed measure of distance; therefore we retain the optimality through induction.<BR>
+<input type="radio" name="72">The provided algorithm is not optimal as there is no way to guarantee that all iterates before the current iterate were optimal.<BR>
+<input type="radio" name="73">It is possible to map the exact one-to-one match between the signals in this algorithms<BR>
+<input type="radio" name="74">The complexity of this algorithm is O(mn).<BR>
+<input type="radio" name="75">This algorithm is exponential and useless.<BR>
+</p>
+
+<P>16. In a <b>finite-state-machine</b> with time-invariant transition probabilities (the example below MAY or MAY NOT be an FSM), which of the following are true? <BR>
+<img src="FSM.png" style="opacity:0.5;width:500px;height:300px;"><BR>
+<input type="radio" name="76">It is impossible to find the most likely state of the machine after a large number of transitions.<BR>
+<input type="radio" name="77">The eigenvector of the transition matrix yields the stationary distribution of the states of the machine.<BR>
+<input type="radio" name="78">The probabilities on the incoming edges to a node sum to 1.<BR>
+<input type="radio" name="79">The probabilities on the outgoing edges from a node sum to 1.<BR>
+<input type="radio" name="80">All finite state machines are stationary.<BR>
 </p>
 
 <input type="submit" value="Send Answers" onclick="redirect()">

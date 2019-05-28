@@ -1,13 +1,16 @@
 import re
 import csv
 
-number_of_questions = 12
+number_of_questions = 16
 number_of_options = 5
-w, h = number_of_questions*number_of_options + 2, 6;
+
+number_of_studs = 10
+w, h = number_of_questions*number_of_options + 2, number_of_studs;
+
 Matrix = [["0" for x in range(w)] for y in range(h)] 
 
 def initr():
-    with open("/Users/pavan/Desktop/assessments/assess1_LP.txt",'r') as f:
+    with open("/Users/pavan/Desktop/Research/Masters_Project/SRC/assessments/assess1_LP.txt",'r') as f:
         mylist = f.read().splitlines() 
     return mylist
 
@@ -38,7 +41,7 @@ def scrape(lines):
 
 # WIPES PREVIOUS ENTRIES INTO CSV. SAVE INSTANCE!!
 def save_to_csv(db,r):     
-    with open("/Users/pavan/Desktop/assessments/assess1_LP.csv", "wb") as f:
+    with open("/Users/pavan/Desktop/Research/Masters_Project/SRC/assessments/assess1_LP.csv", "wb") as f:
         writer = csv.writer(f)
         writer.writerows(db[0:r+1][:])   
 

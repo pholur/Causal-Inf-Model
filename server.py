@@ -23,7 +23,7 @@ class ServerHandler(SimpleHTTPServer.SimpleHTTPRequestHandler):
         response.write(body)
         millis = int(round(time.time() * 1000))
         print (response.getvalue() + '&' + "time=" + str(millis/3600000)+'\n')
-        f= open("/Users/pavan/Desktop/assessments/assess1_LP.txt",'a+')
+        f= open("/Users/pavan/Desktop/Research/Masters_Project/SRC/assessments/assess1_LP.txt",'a+')
         f.write(response.getvalue() + '&' + "time=" + str(millis/3600000)+'\n')
         f.close()
         
