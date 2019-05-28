@@ -1,6 +1,8 @@
 # Causal Inferencing in Education (for Proofs and Logic in Engineering)
 
-Provided a well-modelled graph for a causal network in the learning process, our intention is to use this expert system and diagnose the cause for a student's failure in learning proofs based on observed diagnostic data. This graph can be seen in graph.html. The learning uses Bayesian approaches in weighting nodes of the graph. It is important to note that we DO NOT generate the causal graph in this example.
+Provided a well-modelled graph for a causal network in the learning process, our intention is to use this expert system and diagnose the cause for a student's failure in learning proofs based on observed diagnostic data. This graph can be seen in graph.html. The learning uses Bayesian approaches in weighting nodes of the graph. It is important to note that we DO NOT generate the causal graph in this example. Therefore the graph is given below. The weights of yellow nodes are found by the diagnostic test and the weight of the green nodes are computed using Bayesian inferencing. The edges are subject to an expert system defined in infer.py.
+
+![](https://github.com/pholur/Causal_Inf_Model/blob/master/knowledge_graph.png)
 
 ## Instructions to Run the Software
 
