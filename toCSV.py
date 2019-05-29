@@ -1,3 +1,4 @@
+# This code takes the data from the text file and adds it to the csv file.
 import re
 import csv
 
@@ -26,7 +27,7 @@ def scrape(lines):
             elif keyval[0] == "time":
                 c = 1
             else:
-                c = int(keyval[0])
+                c = int(keyval[0]) + 1
 
             if keyval[1] == "on":
                 val = "1"

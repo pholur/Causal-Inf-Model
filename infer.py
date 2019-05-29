@@ -25,7 +25,7 @@ adj_matrix = [
 [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1]]
 
 import numpy as np
-number_of_entries = 2
+number_of_entries = 8
 
 corr_ans = [
 0, 1, 1, 0, 0,
@@ -70,7 +70,9 @@ def process_cause(user_sc):
                 else:
                     tri = A[i][j]
         l.append((user_sc[i-7] - sumt)/tri) # trying to compute Bayesian probabilities
-    #print l
+    # print l
+    # The weight on each of the pratice nodes reflect the required training. Lower score
+    # triggers lowers values on l. 
     return l
 
 def ret_val(user_ans, i,j):
@@ -112,7 +114,6 @@ def score_per_concept(user_ans):
     value = ret_val(user_ans, 35,40) + ret_val(user_ans, 50, 65) + ret_val(user_ans, 75, 80)
     length = 25.0
     l.append(1 - value / length)
-
     return l
 
 inference = ["Vocabulary of Simple Logic Expressions", "Semantics of Simple Logic Vocab", 
