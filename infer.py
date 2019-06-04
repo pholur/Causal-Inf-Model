@@ -155,6 +155,9 @@ if __name__ == '__main__':
             ' and ' + inference[indic[1]] + '.' + '\033[0m'
             print
             print "\033[1m" + "Some suitable links " + "\033[0m" + "to help you get better at your weaknesses are listed here:"
+            for i in indic:
+            	if val[i] < 0 or val[i] > 1:
+            		print "Likely confounding cause undiscovered in " + inference[i]
             print ">> " + sample_learning_mats[indic[0]]
             print ">> " + sample_learning_mats[indic[1]]
 
